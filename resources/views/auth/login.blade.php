@@ -61,7 +61,7 @@
                                     @endif
                                     <button class="btn btn-primary btn-lg btn-shadow" type="submit">{{ __('MASUK') }}</button>
                                 </div>
-                                {!! app('captcha')->render() !!}
+                                {{-- {!! app('captcha')->display() !!} --}}
                             </form>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
             </div>
         </div>
     </main>
-    @include('notify::messages')
+    {{-- @include('notify::messages') --}}
     @notifyJs
     @include('layouts.include.script')
 </body>

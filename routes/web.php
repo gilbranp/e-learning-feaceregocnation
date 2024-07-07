@@ -102,3 +102,5 @@ Route::post('email/cek', 'SiswaController@cekEmail')->name('siswa.email.cek');
 Route::post('username/cek', 'SiswaController@cekUsername')->name('siswa.username.cek');
 Route::post('nis/cek', 'SiswaController@cekNis')->name('siswa.nis.cek');
 Route::post('nip/cek', 'GuruController@cekNip')->name('guru.nip.cek');
+
+
