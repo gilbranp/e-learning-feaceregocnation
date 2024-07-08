@@ -3,8 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class StatusUser
 {
@@ -17,15 +17,24 @@ class StatusUser
      */
     public function handle($request, Closure $next)
     {
-        if (auth()->check()) {
-            if (auth()->user()->status == true) {
+        // Cek apakah pengguna sudah login
+        if (Auth::check()) {
+            // Cek status pengguna
+            if (Auth::user()->status) {
                 return $next($request);
             } else {
-                notify()->warning('Akun anda belum diverifikasi atau Telah ditangguhkan, silahkan cek Email anda');
+                // Menyimpan pesan ke session
+                Session::flash('warning', 'Akun anda belum diverifikasi atau telah ditangguhkan, silahkan cek email anda.');
+
+                // Logout pengguna
                 Auth::logout();
-                return back();
+
+                // Redirect ke halaman sebelumnya
+                return redirect()->back();
             }
         }
+
+        // Jika pengguna tidak login, lanjutkan request
         return $next($request);
     }
 }

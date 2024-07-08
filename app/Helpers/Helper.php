@@ -15,4 +15,6 @@ function set_active($uri, $output = 'active')
             return $output;
         }
     }
+    
+    return ''; // Kembalikan string kosong jika tidak ada kecocokan
 }

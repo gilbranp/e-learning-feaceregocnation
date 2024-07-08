@@ -30,7 +30,7 @@ class AbsenController extends Controller
                         ->get();
                 }
             } else {
-                notify()->warning('Silahkan mengisi data siswa dan kelas terlebih dahulu');
+                // notify()->warning('Silahkan mengisi data siswa dan kelas terlebih dahulu');
                 return back();
             }
         }
