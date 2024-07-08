@@ -170,7 +170,7 @@
                             @enderror
                         </div>
                         
-                        <button type="submit" id="simpan" name="simpan" class="btn btn-primary mb-0 float-right">Submit</button>
+                        <button type="submit" id="simpan" class="btn btn-primary mb-0 float-right">Submit</button>
                     </form>
                 </div>
             </div>

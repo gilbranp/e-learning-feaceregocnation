@@ -3,15 +3,21 @@
 
 <head>
     @include('layouts.include.head')
-    @notifyCss
+    {{-- @notifyCss --}}
 </head>
 
 <body onload="startTime()" id="app-container" class="menu-sub-hidden right-menu ltr rounded">
-    @php
-    foreach ($errors->all() as $error){
-        notify()->error($error);
-    }
-    @endphp
+    @if(Session::has('success'))
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+    </div>
+@endif
+
+@if(Session::has('error'))
+    <div class="alert alert-danger">
+        {{ Session::get('error') }}
+    </div>
+@endif
     
     @include('layouts.include.navbar')
     
@@ -24,9 +30,9 @@
     @include('layouts.include.footer')
     
     @include('layouts.include.script')
-    @include('notify::messages')
+    {{-- @include('notify::messages') --}}
     
-    @notifyJs
+    {{-- @notifyJs --}}
 </body>
 
 </html>
