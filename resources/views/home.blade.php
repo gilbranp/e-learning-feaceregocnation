@@ -97,7 +97,7 @@
                                 echo '<h5 class="card-title"> Selamat Malam '.auth()->user()->nama .'</h5>';
                             }
                             @endphp
-                            @if (date('D') == 'Sun')
+                            {{-- @if (date('D') == 'Sun')
                             <div class="alert alert-info" role="alert">
                                 Karna Hari Minggu , kamu ga perlu absen deh <br>
                                 Istirahat aja dirumah, Jangan kelayapan :)
@@ -189,9 +189,9 @@
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
                     </div>
-                    </div>
-                    <div class="col-12 col-md-7 col-lg-7">
+                    <div class="col-12">
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="jumbotron">
@@ -201,11 +201,12 @@
                                         Dapat memperoleh informasi secara tepat dan cepat..
                                         
                                         Meminalisir waktu dan efisiensi dalam pengajaran</p>
-                                        <hr class="my-4">
-                                    </div>
+                                    <hr class="my-4">
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
                     </div>
                     @endif
                 </div>

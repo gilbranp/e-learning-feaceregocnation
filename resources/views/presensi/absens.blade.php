@@ -49,7 +49,7 @@
                                 echo '<h5 class="card-title"> Selamat Malam '.auth()->user()->nama .'</h5>';
                             }
                             @endphp
-                            @if (date('D') == 'Sun')
+                            {{-- @if (date('D') == 'Sun')
                             <div class="alert alert-info" role="alert">
                                 Karna Hari Minggu , kamu ga perlu absen deh <br>
                                 Istirahat aja dirumah, Jangan kelayapan :)
@@ -120,7 +120,7 @@
                                         <button class="btn btn-primary float-right" type="submit" name="submit">Submit</button>
                                     </form>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

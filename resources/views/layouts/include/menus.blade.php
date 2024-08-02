@@ -1,3 +1,5 @@
+
+
 <div class="menu">
     <div class="main-menu">
         <div class="scroll">
@@ -28,7 +30,7 @@
                     </a>
                 </li>
                 @endif
-                
+
                 <li class="{{ set_active(['modul.index','modul.create','modul.show','modul.edit']) }}">
                     <a href="{{ route('modul.index') }}">
                         <i class="simple-icon-credit-card"></i>
@@ -66,6 +68,7 @@
             </ul>
         </div>
     </div>
+
     <div class="sub-menu">
         <div class="scroll">
             <ul class="list-unstyled" data-link="datamaster">

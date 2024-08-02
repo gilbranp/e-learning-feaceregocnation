@@ -63,7 +63,8 @@ class SiswaController extends Controller
                 ->addIndexColumn()
                 ->toJson();
         }
-        return view('siswa.index');
+        $users = User::whereNotNull('kelas_id')->get(['id', 'nama']);
+        return view('siswa.index',['dataModal'=>$users]);
     }
 
     public function create()
@@ -264,5 +265,10 @@ class SiswaController extends Controller
         $data->update();
         Session::flash('success', 'Registrasi Akun ' . $data->nama . ' Telah Disetujui');
         return back();
+    }
+
+    public function indexTambahFoto(){
+        $users = User::whereNotNull('kelas_id')->get(['id', 'nama']);
+        return view('siswa.fotoSiswa', ['data' => $users]);
     }
 }

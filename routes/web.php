@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RecognitionController;
 use Illuminate\Support\Facades\Auth;
 use UniSharp\LaravelFilemanager\Lfm;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,14 @@ Route::group(['middleware' => 'role:guru'], function () {
     Route::post('semester/aktif/{id}', 'SemesterController@aktif')->name('semester.aktif');
 
     Route::get('absensi', 'AbsenController@index')->name('absensi.index');
+    // Route::post('absensiStart', 'AbsenController@storeCatat')->name('absensi.start');
+    Route::post('catat-absensi', 'AbsenController@catat')->name('absensi.catat');
+    Route::post('catat-aksi', 'AbsenController@storeCatat')->name('absensi.aksiCatat');
+    Route::post('catat-aksi-deteksi', 'AbsenController@storeCatatDeteksi')->name('absensi.aksiCatatDeteksi');
+    Route::post('catat-manual', 'AbsenController@catatManual')->name('absensi.aksiCatatManual');
+    Route::post('unggah-image', [RecognitionController::class, 'uploadPhoto'])->name('unggah-image');
+    Route::post('tambahFotoSiswa', 'AbsenController@fotoSiswa')->name('absensi.tambahFoto');
+
     Route::get('laporan-harian-siswa', 'AbsenController@laporanHarian')->name('absensi.harian');
     Route::get('laporan-harian-kelas', 'AbsenController@laporanHarianKelas')->name('absensi.kelas.harian');
     Route::get('laporan-harian-siswa-tidak-hadir', 'AbsenController@laporanHarianTidakHadir')->name('absensi.tidakhadir.harian');
@@ -51,6 +60,7 @@ Route::group(['middleware' => 'role:guru'], function () {
 
     Route::resource('mapel', 'MapelController');
 
+    Route::get('training', 'RecognitionController@training')->name('training');
     // Route::resource('quiz', 'QuizController');
     // Route::get('tipe-soal/{id}/{judul}', 'QuizController@tipeSoal')->name('quiz.tipeSoal');
     // Route::get('create-soal-pilihan-ganda/{id}/{judul}', 'QuizPilgandaController@index')->name('soal.pilGanda');

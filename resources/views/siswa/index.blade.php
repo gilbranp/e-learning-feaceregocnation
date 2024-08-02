@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-12">
             <h1>Datatables Rows</h1>
-            
+            @if (session('message'))
+                <div class="alert alert-success">
+                    {{ session('message') }}
+                </div>
+            @endif
+
             <div class="top-right-button-container">
                 <div class="btn-group">
                     <button class="btn btn-outline-success btn-lg dropdown-toggle" type="button"
@@ -22,7 +27,49 @@
                         TAMBAH DATA</a>
                     </div>
                 </div>
-                
+                <div class="top-right-button-container">
+                    <a type="button"  data-toggle="modal" data-target="#FotoModal" class="btn btn-outline-primary btn-lg">
+                        TAMBAH DATA FOTO</a>
+                    </div>
+                </div>
+                <div class="modal fade" id="FotoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Tambah Foto *Pastikan nama file sesuai dengan ID user</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('absensi.tambahFoto') }}" method="POST" onsubmit="return confirm('Apakah data sudah benar?')" enctype="multipart/form-data">
+                                @csrf
+                                <div>
+                                    <label for="gambar">Upload Gambar:</label>
+                                    <input type="file" name="gambar" id="gambar" required>
+                                </div>
+                                <div>
+                                    <label for="nama_baru">Nama Baru: ID | NAMA </label>
+                                    <select name="nama_baru" id="nama_baru" required class="custom-select">
+                                        @foreach ($dataModal as $dataModel)
+                                            <option value="{{ $dataModel->id }}">{{ $dataModel->id }} | {{ $dataModel->nama }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Kirim</button>
+                                </div>
+                            </form>            
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="top-right-button-container">
+                    <a href="{{ route('training') }}" class="btn btn-outline-primary btn-lg">
+                        TRAINING DATASET</a>
+                    </div>
+                </div>
             </div>
             
             <nav class="breadcrumb-container d-none d-sm-block d-lg-inline-block" aria-label="breadcrumb">
@@ -83,6 +130,7 @@
                         <th>Tempat/Tgl Lahir</th>
                         <th>Status</th>
                         <th class="empty">&nbsp;</th>
+                        
                     </tr>
                 </thead>
                 <tbody class="list">
@@ -158,7 +206,7 @@
             {data: 'jk', name: 'jk'},
             {data: 'tgl_lahir', name: 'tgl_lahir'},
             {data: 'status', name: 'status'},
-            {data: 'aksi', name:'aksi'}
+            {data: 'aksi', name:'aksi'},
             ],
             language: {
                 paginate: {

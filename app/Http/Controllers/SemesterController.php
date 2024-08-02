@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Model\Absen;
 use App\Model\Semester;
-use Exception;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use UniSharp\LaravelFilemanager\Controllers\Controller;
 
 class SemesterController extends Controller
 {
